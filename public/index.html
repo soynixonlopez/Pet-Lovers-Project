@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetLover - Tu Tienda de Mascotas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../src/components/css/components.css">
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="animate-up">Tu Marketplace de Productos para Mascotas</h1>
+            <p class="animate-up delay-1">Compra y vende todo lo que tus mascotas necesitan en un solo lugar</p>
+            <div class="hero-buttons animate-up delay-2">
+                <a href="marketplace.html" class="btn btn-primary btn-lg">Explorar Productos</a>
+                <a href="pages/register.html?type=business" class="btn btn-outline-light btn-lg">Vender en PetLover</a>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="featured-categories">
+        <div class="container">
+            <h2 class="section-title">Categorías Destacadas</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg" alt="Perros">
+                        <div class="category-content">
+                            <h3>Perros</h3>
+                            <p>Alimentos, juguetes y accesorios</p>
+                            <a href="category/dogs.html" class="btn btn-light">Ver Productos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <img src="https://images.pexels.com/photos/2061057/pexels-photo-2061057.jpeg" alt="Gatos">
+                        <div class="category-content">
+                            <h3>Gatos</h3>
+                            <p>Todo para tu felino</p>
+                            <a href="category/cats.html" class="btn btn-light">Ver Productos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <img src="https://images.pexels.com/photos/2928158/pexels-photo-2928158.jpeg" alt="Accesorios">
+                        <div class="category-content">
+                            <h3>Accesorios</h3>
+                            <p>Camas, transportadoras y más</p>
+                            <a href="category/accessories.html" class="btn btn-light">Ver Productos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegirnos?</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-truck-fast"></i>
+                        <h3>Envío Rápido</h3>
+                        <p>Entrega en 24/48 horas</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-medal"></i>
+                        <h3>Calidad Premium</h3>
+                        <p>Productos certificados</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-tags"></i>
+                        <h3>Mejores Precios</h3>
+                        <p>Ofertas exclusivas</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-headset"></i>
+                        <h3>Soporte 24/7</h3>
+                        <p>Siempre disponibles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sell on PetLover Section -->
+    <section class="sell-on-petlover">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Vende en PetLover</h2>
+                <p class="lead">Únete a la comunidad líder de productos para mascotas</p>
+            </div>
+            
+            <div class="seller-features">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="seller-card">
+                            <div class="card-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <h3>Tu Tienda Online</h3>
+                            <p>Crea tu tienda personalizada y gestiona tus productos fácilmente</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Panel de control intuitivo</li>
+                                <li><i class="fas fa-check"></i> Gestión de inventario</li>
+                                <li><i class="fas fa-check"></i> Estadísticas en tiempo real</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="seller-card featured">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Haz Crecer tu Negocio</h3>
+                            <p>Alcanza a miles de dueños de mascotas en toda la región</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Marketing integrado</li>
+                                <li><i class="fas fa-check"></i> Herramientas de promoción</li>
+                                <li><i class="fas fa-check"></i> Análisis de mercado</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="seller-card">
+                            <div class="card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Ventas Seguras</h3>
+                            <p>Sistema de pagos seguro y soporte dedicado</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Pagos protegidos</li>
+                                <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                                <li><i class="fas fa-check"></i> Gestión de envíos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seller-cta text-center mt-5">
+                <h3>¿Listo para empezar?</h3>
+                <p class="mb-4">Únete a más de 1,000 vendedores que confían en PetLover</p>
+                <a href="pages/register.html?type=business" class="btn btn-primary btn-lg">
+                    Crear mi Tienda <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="product-card">
+                        <div class="product-badge">Nuevo</div>
+                        <img src="https://images.pexels.com/photos/1564506/pexels-photo-1564506.jpeg" alt="Producto 1">
+                        <div class="product-details">
+                            <h3>Collar Premium</h3>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="price">$29.99</p>
+                            <button class="btn btn-primary">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card">
+                        <div class="product-badge sale">-20%</div>
+                        <img src="https://images.pexels.com/photos/6568944/pexels-photo-6568944.jpeg" alt="Producto 2">
+                        <div class="product-details">
+                            <h3>Cama Ortopédica</h3>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="price"><span class="original-price">$99.99</span> $79.99</p>
+                            <button class="btn btn-primary">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card">
+                        <img src="https://images.pexels.com/photos/6568907/pexels-photo-6568907.jpeg" alt="Producto 3">
+                        <div class="product-details">
+                            <h3>Juguete Interactivo</h3>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <p class="price">$19.99</p>
+                            <button class="btn btn-primary">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card">
+                        <div class="product-badge">Popular</div>
+                        <img src="https://images.pexels.com/photos/7788657/pexels-photo-7788657.jpeg" alt="Producto 4">
+                        <div class="product-details">
+                            <h3>Dispensador Automático</h3>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="price">$49.99</p>
+                            <button class="btn btn-primary">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="about-content">
+                        <h2 class="section-title text-start">Quiénes Somos</h2>
+                        <p class="lead">En PetLover, nuestra pasión por las mascotas nos impulsa a ofrecer lo mejor para tu compañero peludo.</p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <i class="fas fa-heart"></i>
+                                <div class="feature-text">
+                                    <h4>Pasión por las Mascotas</h4>
+                                    <p>Más de 10 años cuidando y amando a las mascotas como si fueran nuestras.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-certificate"></i>
+                                <div class="feature-text">
+                                    <h4>Productos Certificados</h4>
+                                    <p>Trabajamos solo con las mejores marcas y productos de calidad garantizada.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <div class="feature-text">
+                                    <h4>Equipo Experto</h4>
+                                    <p>Personal capacitado y apasionado por el bienestar animal.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="about.html" class="btn btn-primary btn-lg mt-4">Conoce Más</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-images">
+                        <img src="https://images.pexels.com/photos/6131568/pexels-photo-6131568.jpeg" alt="Nuestro equipo" class="img-main">
+                        <img src="https://images.pexels.com/photos/6131576/pexels-photo-6131576.jpeg" alt="Nuestras instalaciones" class="img-secondary">
+                        <div class="experience-badge">
+                            <span class="years">10+</span>
+                            <span class="text">Años de<br>Experiencia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>¡Únete a nuestra familia!</h2>
+                <p>Recibe ofertas exclusivas y consejos para el cuidado de tu mascota</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Tu correo electrónico">
+                        <button class="btn btn-primary" type="submit">Suscribirse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/components.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PetLover</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header-main">
+        <div class="header-search">
+            <input type="search" placeholder="Buscar productos, pedidos...">
+        </div>
+        <div class="header-user">
+            <button class="btn-action btn-outline position-relative">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+            <button class="btn-action btn-outline">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+            <img src="https://ui-avatars.com/api/?name=User&background=ff6b6b&color=fff" alt="User" class="user-avatar">
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-paw"></i>
+                    PetLover
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="fas fa-home"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-shopping-bag"></i>
+                            Mis Pedidos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-heart"></i>
+                            Favoritos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-user"></i>
+                            Mi Perfil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            Configuración
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="logout-button">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div class="user-welcome">
+                    <h1>Bienvenido, <span id="user-name">Usuario</span></h1>
+                    <p>Aquí tienes un resumen de tu actividad</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-action btn-outline">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <button class="btn-action btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Nueva Orden
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon orders">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Pedidos Totales</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon sales">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">$350</div>
+                    <div class="stat-label">Total Gastado</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon products">
+                            <i class="fas fa-box"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Productos Favoritos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon views">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">4.8</div>
+                    <div class="stat-label">Calificación Promedio</div>
+                </div>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <img src="https://ui-avatars.com/api/?name=User&background=ff6b6b&color=fff" alt="Profile" class="profile-avatar">
+                    <div class="profile-info">
+                        <h2 id="profile-name">Nombre del Usuario</h2>
+                        <p id="profile-email">usuario@email.com</p>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <h3>12</h3>
+                        <span>Pedidos</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>5</h3>
+                        <span>Reseñas</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3</h3>
+                        <span>Mascotas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-section">
+                <div class="section-header">
+                    <h2>Actividad Reciente</h2>
+                    <button class="btn-action btn-outline">Ver Todo</button>
+                </div>
+                <ul class="activity-list">
+                    <li class="activity-item">
+                        <div class="activity-icon" style="background: rgba(255, 107, 107, 0.1); color: var(--primary-color);">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h3 class="activity-title">Nuevo pedido realizado</h3>
+                            <p class="activity-time">Hace 2 horas</p>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon" style="background: rgba(46, 204, 113, 0.1); color: var(--success-color);">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h3 class="activity-title">Reseña publicada</h3>
+                            <p class="activity-time">Ayer</p>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon" style="background: rgba(52, 152, 219, 0.1); color: #3498db;">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h3 class="activity-title">Producto añadido a favoritos</h3>
+                            <p class="activity-time">Hace 2 días</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="footer-content">
+            <div class="footer-copyright">
+                © 2024 PetLover. Todos los derechos reservados.
+            </div>
+            <div class="footer-links">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Ayuda</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase -->
+    <script type="module">
+        import { auth, db } from '../../functions/firebase.js';
+        import { logoutUser } from '../../functions/auth.js';
+        import { onAuthStateChanged } from 'firebase/auth';
+        import { doc, getDoc } from 'firebase/firestore';
+
+        // Verificar estado de autenticación
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // Usuario está autenticado
+                try {
+                    const userDoc = await getDoc(doc(db, 'users', user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        
+                        // Actualizar nombre de usuario
+                        const userName = userData.firstName ? 
+                            `${userData.firstName} ${userData.lastName}` : 
+                            userData.businessName || 'Usuario';
+                        
+                        document.getElementById('user-name').textContent = userName;
+                        document.getElementById('profile-name').textContent = userName;
+                        document.getElementById('profile-email').textContent = user.email;
+                    }
+                } catch (error) {
+                    console.error('Error al obtener datos del usuario:', error);
+                }
+            } else {
+                // Usuario no está autenticado, redirigir al login
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Manejar cierre de sesión
+        document.getElementById('logout-button').addEventListener('click', async () => {
+            try {
+                const result = await logoutUser();
+                if (result.success) {
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Error al cerrar sesión: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al cerrar sesión');
+            }
+        });
+    </script>
+</body>
+</html> 
