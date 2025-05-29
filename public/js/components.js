@@ -1,196 +1,165 @@
-// Component Loading System
+/**
+ * Componentes Reutilizables
+ * Este archivo maneja la carga y funcionalidad de los componentes header y footer
+ */
+
+// Cargar los componentes cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-    loadComponents();
-    initializeNavigation();
-    initializeSearch();
-    initializeCart();
-    initializeMobileMenu();
-    initializeSocialLinks();
-    initializeScrollEffects();
+    // Solo cargar componentes si estamos en la página principal
+    if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/')) {
+        loadHeader();
+        loadFooter();
+    }
+    initializeComponents();
 });
 
-// Component Loading
-function loadComponents() {
-    // Load header
-    const headerPlaceholder = document.querySelector('#header-placeholder');
-    if (headerPlaceholder) {
-        fetch('../src/components/html/header.html')
-            .then(response => response.text())
-            .then(data => {
-                headerPlaceholder.innerHTML = data;
-                initializeHeader();
-            })
-            .catch(error => console.error('Error loading header:', error));
-    }
+/**
+ * Carga el componente Header
+ */
+function loadHeader() {
+    const headerPlaceholder = document.getElementById('header-placeholder');
+    if (!headerPlaceholder) return;
 
-    // Load footer
-    const footerPlaceholder = document.querySelector('#footer-placeholder');
-    if (footerPlaceholder) {
-        fetch('../src/components/html/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                footerPlaceholder.innerHTML = data;
-                initializeFooter();
-            })
-            .catch(error => console.error('Error loading footer:', error));
-    }
+    fetch('./components/header.html')
+        .then(response => response.text())
+        .then(data => {
+            headerPlaceholder.innerHTML = data;
+            initializeHeader();
+        })
+        .catch(error => {
+            console.error('Error loading header:', error);
+        });
 }
 
-// Navigation Active State
-function initializeNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        if (link.href === window.location.href) {
+/**
+ * Carga el componente Footer
+ */
+function loadFooter() {
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (!footerPlaceholder) return;
+
+    fetch('./components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            footerPlaceholder.innerHTML = data;
+            initializeFooter();
+        })
+        .catch(error => {
+            console.error('Error loading footer:', error);
+        });
+}
+
+/**
+ * Inicializa las funcionalidades del Header
+ */
+function initializeHeader() {
+    // Marcar el enlace activo en la navegación
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
             link.classList.add('active');
         }
-        
-        link.addEventListener('click', function() {
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-}
-
-// Scroll Effects
-function initializeScrollEffects() {
-    const scrollElements = document.querySelectorAll('.scroll-animate');
-    
-    const elementInView = (el, percentageScroll = 100) => {
-        const elementTop = el.getBoundingClientRect().top;
-        return (elementTop <= (window.innerHeight * (percentageScroll/100)));
-    };
-
-    const displayScrollElement = element => {
-        element.classList.add('scrolled');
-    };
-
-    const handleScrollAnimation = () => {
-        scrollElements.forEach((el) => {
-            if (elementInView(el, 100)) {
-                displayScrollElement(el);
-            }
-        });
-    };
-
-    window.addEventListener('scroll', () => {
-        handleScrollAnimation();
     });
 
-    // Back to top button
-    const backToTop = document.querySelector('.back-to-top');
-    if (backToTop) {
+    // Efecto de scroll en el navbar
+    const navbar = document.querySelector('.main-header');
+    if (navbar) {
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                backToTop.classList.add('active');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
             } else {
-                backToTop.classList.remove('active');
+                navbar.classList.remove('navbar-scrolled');
             }
-        });
-
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-}
 
-// Search Handling
-function initializeSearch() {
+    // Manejar el formulario de búsqueda
     const searchForm = document.querySelector('.search-form');
-    const searchInput = document.querySelector('.search-input');
-    const searchResults = document.querySelector('.search-results');
-
-    if (searchForm && searchInput) {
+    if (searchForm) {
         searchForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const query = searchInput.value.trim();
-            if (query) {
-                // Implement search functionality here
-                console.log('Searching for:', query);
-            }
-        });
-
-        // Live search suggestions
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.trim();
-            if (query && searchResults) {
-                // Implement live search suggestions here
-                searchResults.style.display = 'block';
-            } else if (searchResults) {
-                searchResults.style.display = 'none';
-            }
-        });
-    }
-}
-
-// Cart Functionality
-function initializeCart() {
-    const cartIcon = document.querySelector('.cart-icon');
-    const cartCounter = document.querySelector('.cart-counter');
-    const cartDropdown = document.querySelector('.cart-dropdown');
-    
-    if (cartIcon && cartDropdown) {
-        cartIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            cartDropdown.classList.toggle('show');
-        });
-
-        // Close cart dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!cartIcon.contains(e.target) && !cartDropdown.contains(e.target)) {
-                cartDropdown.classList.remove('show');
-            }
+            const searchTerm = searchForm.querySelector('input').value;
+            // Aquí puedes implementar la lógica de búsqueda
+            console.log('Búsqueda:', searchTerm);
         });
     }
 
-    // Update cart counter
-    function updateCartCounter(count) {
-        if (cartCounter) {
-            cartCounter.textContent = count;
-            cartCounter.style.display = count > 0 ? 'block' : 'none';
-        }
-    }
-
-    // Initialize with 0 items
-    updateCartCounter(0);
-}
-
-// Mobile Menu
-function initializeMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const overlay = document.querySelector('.mobile-menu-overlay');
-
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            if (overlay) {
-                overlay.classList.toggle('active');
-            }
-            document.body.classList.toggle('menu-open');
-        });
-
-        if (overlay) {
-            overlay.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.classList.remove('menu-open');
+    // Dropdown hover en desktop
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        if (window.innerWidth >= 992) {
+            dropdown.addEventListener('mouseenter', () => {
+                dropdown.querySelector('.dropdown-menu')?.classList.add('show');
+            });
+            dropdown.addEventListener('mouseleave', () => {
+                dropdown.querySelector('.dropdown-menu')?.classList.remove('show');
             });
         }
-    }
+    });
 }
 
-// Social Links
-function initializeSocialLinks() {
+/**
+ * Inicializa las funcionalidades del Footer
+ */
+function initializeFooter() {
+    // Botón "Volver arriba"
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Inicializar enlaces sociales
     const socialLinks = document.querySelectorAll('.social-link');
-    
     socialLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            const platform = e.currentTarget.dataset.platform;
-            const url = e.currentTarget.href;
-            
-            // Analytics tracking can be added here
-            console.log(`Clicked ${platform} social link:`, url);
+            e.preventDefault();
+            const url = link.getAttribute('href');
+            if (url !== '#') {
+                window.open(url, '_blank');
+            }
         });
     });
-} 
+}
+
+/**
+ * Inicializa componentes adicionales y funcionalidades globales
+ */
+function initializeComponents() {
+    // Cerrar menú móvil al hacer clic fuera
+    document.addEventListener('click', (e) => {
+        const navbar = document.querySelector('.navbar-collapse');
+        const toggleButton = document.querySelector('.navbar-toggler');
+        
+        if (!navbar?.contains(e.target) && !toggleButton?.contains(e.target)) {
+            navbar?.classList.remove('show');
+        }
+    });
+
+    // Manejar carrito de compras
+    updateCartCount();
+}
+
+/**
+ * Actualiza el contador del carrito
+ */
+function updateCartCount() {
+    const cartCount = document.querySelector('.cart-count');
+    if (cartCount) {
+        // Aquí puedes implementar la lógica para obtener el número real de items
+        const itemsInCart = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')).length : 0;
+        cartCount.textContent = itemsInCart;
+    }
+}
