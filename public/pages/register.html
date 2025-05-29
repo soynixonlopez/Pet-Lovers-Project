@@ -196,74 +196,30 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Firebase CDN -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCq9Vwd_vbd3JzEJ--UbSzbhGrVxJshhhw",
+            authDomain: "expo-project-98483.firebaseapp.com",
+            projectId: "expo-project-98483",
+            storageBucket: "expo-project-98483.firebasestorage.app",
+            messagingSenderId: "93909768353",
+            appId: "1:93909768353:web:728e45d483fd3dc0b0b8e0",
+            measurementId: "G-H5G01Q2PGC"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    
     <!-- Custom JS -->
     <script src="../js/components.js"></script>
-    <script>
-        // Toggle between user and business fields
-        const userAccount = document.getElementById('userAccount');
-        const businessAccount = document.getElementById('businessAccount');
-        const userFields = document.getElementById('userFields');
-        const businessFields = document.getElementById('businessFields');
-
-        userAccount.addEventListener('change', function() {
-            userFields.style.display = 'block';
-            businessFields.style.display = 'none';
-        });
-
-        businessAccount.addEventListener('change', function() {
-            userFields.style.display = 'none';
-            businessFields.style.display = 'block';
-        });
-
-        // Toggle password visibility
-        document.querySelectorAll('.toggle-password').forEach(button => {
-            button.addEventListener('click', function() {
-                const passwordInput = this.parentElement.querySelector('input');
-                const icon = this.querySelector('i');
-                
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                    icon.classList.remove('fa-eye');
-                    icon.classList.add('fa-eye-slash');
-                } else {
-                    passwordInput.type = 'password';
-                    icon.classList.remove('fa-eye-slash');
-                    icon.classList.add('fa-eye');
-                }
-            });
-        });
-
-        // Form validation
-        const form = document.querySelector('form');
-        const passwordInput = document.querySelector('#password');
-        const confirmPasswordInput = document.querySelector('#confirmPassword');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Password match validation
-            if (passwordInput.value !== confirmPasswordInput.value) {
-                alert('Las contraseñas no coinciden');
-                return;
-            }
-
-            // Business fields validation
-            if (businessAccount.checked) {
-                const businessName = document.querySelector('#businessName').value;
-                const businessType = document.querySelector('#businessType').value;
-                const taxId = document.querySelector('#taxId').value;
-                const businessAddress = document.querySelector('#businessAddress').value;
-
-                if (!businessName || !businessType || !taxId || !businessAddress) {
-                    alert('Por favor completa todos los campos del negocio');
-                    return;
-                }
-            }
-
-            // If all validations pass, submit the form
-            // Add your form submission logic here
-            console.log('Form submitted successfully');
-        });
-    </script>
-</body>
+    <script src="../js/register.js"></script>
+    </body>
 </html> 
