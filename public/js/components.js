@@ -14,7 +14,7 @@ function loadComponents() {
     // Load header
     const headerPlaceholder = document.querySelector('#header-placeholder');
     if (headerPlaceholder) {
-        fetch('/components/header.html')
+        fetch('./components/header.html')
             .then(response => response.text())
             .then(data => {
                 headerPlaceholder.innerHTML = data;
@@ -26,7 +26,7 @@ function loadComponents() {
     // Load footer
     const footerPlaceholder = document.querySelector('#footer-placeholder');
     if (footerPlaceholder) {
-        fetch('/components/footer.html')
+        fetch('./components/footer.html')
             .then(response => response.text())
             .then(data => {
                 footerPlaceholder.innerHTML = data;

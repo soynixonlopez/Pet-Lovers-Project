@@ -5,16 +5,17 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCq9Vwd_vbd3JzEJ--UbSzbhGrVxJshhhw",
-  authDomain: "expo-project-98483.firebaseapp.com",
-  projectId: "expo-project-98483",
-  storageBucket: "expo-project-98483.firebasestorage.app",
-  messagingSenderId: "93909768353",
-  appId: "1:93909768353:web:728e45d483fd3dc0b0b8e0",
-  measurementId: "G-H5G01Q2PGC"
+  apiKey: "AIzaSyAbg5nxrEEPuDbfohOmbn8eJVtYPsdUhtI",
+  authDomain: "expo-tech-projects.firebaseapp.com",
+  projectId: "expo-tech-projects",
+  storageBucket: "expo-tech-projects.firebasestorage.app",
+  messagingSenderId: "122667485782",
+  appId: "1:122667485782:web:a6621378fd4673557049f7",
+  measurementId: "G-210YWSZ2EZ"
 };
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const auth = getAuth();
-export const db = getFirestore();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+export { app, auth, db };

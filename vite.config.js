@@ -1,43 +1,30 @@
+// Importaciones necesarias
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
+// Exportamos la configuración de Vite
 export default defineConfig({
-  // Configuración básica
-  root: '.',
-  base: '/',
-  
-  // Directorio público donde están tus assets estáticos
-  publicDir: 'public',
-  
+  // Configuración básica del proyecto
+  root: 'public',        // Carpeta raíz del proyecto
+  publicDir: 'public',   // Carpeta de archivos estáticos
+
+  // Configuración de construcción
+  build: {
+    outDir: '../dist',   // Carpeta de salida para archivos compilados
+    emptyOutDir: true    // Limpia la carpeta antes de construir
+  },
+
   // Configuración del servidor de desarrollo
   server: {
-    port: 3000,
-    open: true, // Abre el navegador automáticamente
-  },
-  
-  // Configuración del build
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    emptyOutDir: true,
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        register: resolve(__dirname, 'public/pages/register.html')
-      },
-    },
+    port: 3000,          // Puerto del servidor
+    open: true           // Abre el navegador automáticamente
   },
 
-  // Optimización
-  optimizeDeps: {
-    include: ['firebase/app', 'firebase/auth', 'firebase/firestore']
-  },
-
-  // Resolución de rutas
+  // Configuración de rutas y alias
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
-      'src': resolve(__dirname, './src')
+      '@': resolve(__dirname, 'src'),     // Alias para importaciones con @
+      '/src': resolve(__dirname, 'src')   // Alias para rutas absolutas
     }
-  },
+  }
 }) 
