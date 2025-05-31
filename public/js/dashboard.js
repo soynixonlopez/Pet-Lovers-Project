@@ -1,21 +1,18 @@
-import { auth, db } from '/src/firebase/firebaseConfig.js';
-import { logoutUser } from '/src/firebase/auth.js';
-import { onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from '../../src/firebase/firebaseConfig.js';
+import { logoutUser } from '../../src/firebase/auth.js';
 import { doc, getDoc } from 'firebase/firestore';
+import RouteGuard from '../../src/firebase/routeGuard.js';
 
-// Inicializar el Dashboard
-export const initializeDashboard = () => {
-    // Verificar estado de autenticación
-    onAuthStateChanged(auth, async (user) => {
-        if (user) {
-            await loadUserData(user);
-            setupLogoutButton();
-        } else {
-            // Usuario no está autenticado, redirigir al login
-            window.location.href = './login.html';
-        }
-    });
-};
+// Inicializar el protector de rutas
+RouteGuard.init();
+
+// Inicializar el Dashboard cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    if (auth.currentUser) {
+        loadUserData(auth.currentUser);
+        setupLogoutButton();
+    }
+});
 
 // Cargar datos del usuario
 const loadUserData = async (user) => {
@@ -38,9 +35,13 @@ const loadUserData = async (user) => {
 
 // Actualizar la UI con los datos del usuario
 const updateUIWithUserData = (userName, userEmail) => {
-    document.getElementById('user-name').textContent = userName;
-    document.getElementById('profile-name').textContent = userName;
-    document.getElementById('profile-email').textContent = userEmail;
+    const userNameElement = document.getElementById('user-name');
+    const profileNameElement = document.getElementById('profile-name');
+    const profileEmailElement = document.getElementById('profile-email');
+
+    if (userNameElement) userNameElement.textContent = userName;
+    if (profileNameElement) profileNameElement.textContent = userName;
+    if (profileEmailElement) profileEmailElement.textContent = userEmail;
 };
 
 // Configurar el botón de logout
@@ -50,7 +51,6 @@ const setupLogoutButton = () => {
         logoutButton.addEventListener('click', async () => {
             try {
                 await logoutUser();
-                window.location.href = './login.html';
             } catch (error) {
                 console.error('Error al cerrar sesión:', error);
             }
