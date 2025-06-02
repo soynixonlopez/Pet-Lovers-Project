@@ -17,7 +17,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         login: resolve(__dirname, 'public/pages/login.html'),
         register: resolve(__dirname, 'public/pages/register.html'),
-        dashboard: resolve(__dirname, 'public/pages/dashboard.html')
+        dashboard: resolve(__dirname, 'public/pages/dashboard.html'),
+        dashboardbusiness: resolve(__dirname, 'public/pages/dashboardbusiness.html')
       }
     }
   },

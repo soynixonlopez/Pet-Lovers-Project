@@ -4,7 +4,8 @@ import {
     onAuthStateChanged,
     signOut 
 } from 'firebase/auth';
-import { auth } from './firebaseConfig';
+import { auth, db } from './firebaseConfig';
+import { doc, getDoc } from 'firebase/firestore';
 import RouteGuard from './routeGuard';
 
 // Inicializar el protector de rutas
@@ -17,7 +18,7 @@ const routeGuard = RouteGuard.init();
 export const logoutUser = async () => {
     try {
         await signOut(auth);
-        // La redirección la manejará el RouteGuard
+        window.location.href = '/pages/login.html';
     } catch (error) {
         console.error('Error al cerrar sesión:', error);
         throw error;
@@ -49,8 +50,21 @@ class AuthManager {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             this.currentUser = userCredential.user;
-            // La redirección la manejará el RouteGuard
-            return userCredential.user;
+            
+            // Obtener el rol del usuario desde Firestore
+            const userDoc = await getDoc(doc(db, 'users', userCredential.user.uid));
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                // Redirigir según el rol
+                if (userData.role === 'business') {
+                    window.location.href = '/pages/dashboardbusiness.html';
+                } else {
+                    window.location.href = '/pages/dashboard.html';
+                }
+                return userCredential.user;
+            } else {
+                throw new Error('Usuario no encontrado en la base de datos');
+            }
         } catch (error) {
             this.handleAuthError(error);
             throw error;
@@ -81,6 +95,10 @@ class AuthManager {
             case 'auth/too-many-requests':
                 errorMessage = 'Demasiados intentos fallidos. Por favor, intenta más tarde.';
                 break;
+            default:
+                if (error.message === 'Usuario no encontrado en la base de datos') {
+                    errorMessage = 'Error en los datos del usuario. Por favor, contacta a soporte.';
+                }
         }
 
         const errorElement = document.getElementById('error-message');
@@ -124,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             try {
                 await authManager.login(email, password);
-                // La redirección la manejará el RouteGuard
             } catch (error) {
                 // Los errores se manejan en handleAuthError
                 console.error('Error en el login:', error);
